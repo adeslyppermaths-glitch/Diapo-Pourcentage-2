@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Vrai ou Faux - Pourcentages</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#111;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+}
+
+.slide{ display:none; max-width:900px; padding:20px; }
+.active{ display:block; }
+
+.timer{
+    font-size:50px;
+    margin-top:40px;
+    color:#ffcc00;
+}
+
+.nav{
+    position:fixed;
+    bottom:20px;
+}
+
+button{
+    margin:10px;
+    padding:12px 20px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.calc{
+    background:#222;
+    padding:15px;
+    margin:10px 0;
+    border-radius:8px;
+    text-align:left;
+}
+
+.vrai{color:#00ff00;font-weight:bold;font-size:22px;}
+.faux{color:#ff4444;font-weight:bold;font-size:22px;}
+</style>
+</head>
+
+<body>
+
+<div id="slides">
+
+<div class="slide active">
+<h1>Vrai ou Faux</h1>
+<h2>Évolutions en pourcentage</h2>
+<p>1 minute par question</p>
+</div>
+
+<!-- QUESTIONS -->
+
+<div class="slide">
+<h2>Affirmation 1</h2>
+<p>Diminuer une quantité d’un cinquième revient à la multiplier par 0,2.</p>
+<div class="timer" data-time="60"></div>
+</div>
+
+<div class="slide">
+<h2>Affirmation 2</h2>
+<p>Une valeur passe de 45 € à 60 €.</p>
+<p><b>Son taux d’évolution est +15 %.</b></p>
+<div class="timer" data-time="60"></div>
+</div>
+
+<div class="slide">
+<h2>Affirmation 3</h2>
+<p>Après une hausse de 50 %, il faut baisser d’un tiers pour retrouver la valeur initiale.</p>
+<div class="timer" data-time="60"></div>
+</div>
+
+<div class="slide">
+<h2>Affirmation 4</h2>
+<p>Après une baisse de 25 %, un prix vaut 90 €.</p>
+<p><b>Le prix initial était 120 €.</b></p>
+<div class="timer" data-time="60"></div>
+</div>
+
+<div class="slide">
+<h2>Affirmation 5</h2>
+<p>Augmenter de 20 % puis diminuer de 20 % fait perdre 4 %.</p>
+<div class="timer" data-time="60"></div>
+</div>
+
+<div class="slide">
+<h2>Affirmation 6</h2>
+<p>Multiplier une valeur par 1,4 correspond à une hausse de 40 %.</p>
+<div class="timer" data-time="60"></div>
+</div>
+
+<div class="slide">
+<h2>Affirmation 7</h2>
+<p>Multiplier une valeur par 0,75 revient à baisser d’un quart.</p>
+<div class="timer" data-time="60"></div>
+</div>
+
+<div class="slide">
+<h2>Affirmation 8</h2>
+<p>Après une baisse d’un quart, il suffit d’augmenter de 25 % pour revenir à la valeur initiale.</p>
+<div class="timer" data-time="60"></div>
+</div>
+
+<!-- CORRECTIONS -->
+
+<div class="slide">
+<h2>Correction 1</h2>
+<div class="calc">
+Un cinquième = 20 %<br>
+Diminuer d’un cinquième → 1 − 0,2 = 0,8<br>
+La multiplication correcte est 0,8 et non 0,2
+</div>
+<p class="faux">❌ Faux</p>
+</div>
+
+<div class="slide">
+<h2>Correction 2</h2>
+<div class="calc">
+Augmentation = 15<br>
+15 / 45 = 1/3 = 33⅓ %
+</div>
+<p class="faux">❌ Faux</p>
+</div>
+
+<div class="slide">
+<h2>Correction 3</h2>
+<div class="calc">
+Hausse 50 % → ×1,5<br>
+Baisse 1/3 → ×2/3<br>
+Produit = 1
+</div>
+<p class="vrai">✅ Vrai</p>
+</div>
+
+<div class="slide">
+<h2>Correction 4</h2>
+<div class="calc">
+Valeur initiale = 90 / 0,75 = 120
+</div>
+<p class="vrai">✅ Vrai</p>
+</div>
+
+<div class="slide">
+<h2>Correction 5</h2>
+<div class="calc">
+1,2 × 0,8 = 0,96 → perte 4 %
+</div>
+<p class="vrai">✅ Vrai</p>
+</div>
+
+<div class="slide">
+<h2>Correction 6</h2>
+<div class="calc">
+1,4 = 1 + 0,4 → 40 %
+</div>
+<p class="vrai">✅ Vrai</p>
+</div>
+
+<div class="slide">
+<h2>Correction 7</h2>
+<div class="calc">
+0,75 = 3/4 = 1 − 1/4<br>
+Cela correspond bien à une baisse d’un quart
+</div>
+<p class="vrai">✅ Vrai</p>
+</div>
+
+<div class="slide">
+<h2>Correction 8</h2>
+<div class="calc">
+Baisse 1/4 → ×0,75<br>
+Retour → ×4/3 = +33⅓ %
+</div>
+<p class="faux">❌ Faux</p>
+</div>
+
+</div>
+
+<div class="nav">
+<button onclick="prevSlide()">⬅</button>
+<button onclick="nextSlide()">➡</button>
+</div>
+
+<script>
+
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+let globalTimer = null;
+
+function showSlide(index){
+    clearInterval(globalTimer);
+    slides.forEach(s=>s.classList.remove("active"));
+    slides[index].classList.add("active");
+    startTimer(slides[index]);
+}
+
+function nextSlide(){
+    if(currentSlide < slides.length-1){
+        currentSlide++;
+        showSlide(currentSlide);
+    }
+}
+
+function prevSlide(){
+    if(currentSlide > 0){
+        currentSlide--;
+        showSlide(currentSlide);
+    }
+}
+
+document.addEventListener("keydown", e=>{
+    if(e.key==="ArrowRight") nextSlide();
+    if(e.key==="ArrowLeft") prevSlide();
+});
+
+function startTimer(slide){
+
+    const timer = slide.querySelector(".timer");
+    if(!timer) return;
+
+    let time = parseInt(timer.dataset.time);
+    timer.textContent = format(time);
+
+    globalTimer = setInterval(()=>{
+        time--;
+        timer.textContent = format(time);
+
+        if(time <= 0){
+            clearInterval(globalTimer);
+            timer.textContent = "Temps écoulé";
+            setTimeout(()=> nextSlide(),1000);
+        }
+
+    },1000);
+}
+
+function format(t){
+    let m = Math.floor(t/60);
+    let s = t%60;
+    return `${m}:${s.toString().padStart(2,"0")}`;
+}
+
+showSlide(0);
+
+</script>
+
+</body>
+</html>
